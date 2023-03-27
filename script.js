@@ -11,12 +11,13 @@ $(function () {
 
    const currentHour = dayjs().format('H')
    console.log(currentHour)
+ 
+  //  if hour is equal to current hour display color red else, if  hour is less than current hour display color gray, else ,hour is more than current hour display color green 
 
    /*
    A conditional statement that checks every timeblock
    */
 
-  // Mon March 27, 2023
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
