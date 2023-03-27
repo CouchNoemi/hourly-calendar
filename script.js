@@ -5,15 +5,39 @@ const currentDateElement = $('#currentDay')
 $(function () {
   const currentDate = dayjs().format('ddd MMMM DD, YYYY')
   console.log(currentDate)
-  // currentDateElement.textContent Raw JS version
-  //vvv Jquery Version vvv
    currentDateElement.text(currentDate)
-
+   
    const currentHour = dayjs().format('H')
    console.log(currentHour)
  
   //  if hour is equal to current hour display color red else, if  hour is less than current hour display color gray, else ,hour is more than current hour display color green 
+//   const rows = $("row");
+// let currentHour = parseInt(moment().format('H'));
 
+// Array.from(rows).forEach(row => {
+//   let
+//     rowIdString = row.id,
+//     rowHour;
+//   if (rowIdString) {
+//     rowHour = parseInt(rowIdString);
+//   }
+//   if (rowHour) {
+//     // Compares row id to current hour and sets color accordingly
+//     if (currentHour === rowHour) {
+//       setColor(row, "red");
+//     } else if ((currentHour < rowHour) && (currentHour > rowHour - 6)) {
+//       setColor(row, "green");
+//     } else if ((currentHour > rowHour) && (currentHour < rowHour + 6)) {
+//       setColor(row, "lightgrey");
+//     } else {
+//       setColor(row, "white");
+//     }
+//   }
+// });
+
+// function setColor(element, color) {
+//   element.style.backgroundColor = color;
+// }
    /*
    A conditional statement that checks every timeblock
    */
