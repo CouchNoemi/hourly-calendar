@@ -1,63 +1,41 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
-const currentDateElement = $('#currentDay')
+
+  potentialDeadlines = [9, 10, 11, 12, 13, 14, 15, 16, 17]
+  function deadlinechecker() {
+    let now = dayjs().hour();
+    let timer = $(".time-block")
+
+    for (var i = 0; i < potentialDeadlines.length; i++) {
+      if(potentialDeadlines[i] < now) {
+        timer.eq(i).children('textarea').addClass('past');
+
+      }else if (potentialDeadlines [i] === now) {
+        timer.eq(i).children('textarea').addClass('present');
+        
+      }else{
+      timer.eq(i).children('textarea').addClass('future');
+        
+    }
+  }};
+  deadlinechecker()
+
+  $('#hour-9 .description').val(localStorage.getItem('hour-9'));
+  $('#hour-10 .description').val(localStorage.getItem('hour-10'));
+  $('#hour-11 .description').val(localStorage.getItem('hour-11'));
+  $('#hour-12 .description').val(localStorage.getItem('hour-12'));
+  $('#hour-13 .description').val(localStorage.getItem('hour-13'));
+  $('#hour-14 .description').val(localStorage.getItem('hour-14'));
+  $('#hour-15 .description').val(localStorage.getItem('hour-15'));
+  $('#hour-16 .description').val(localStorage.getItem('hour-16'));
+  $('#hour-17 .description').val(localStorage.getItem('hour-17'));
+  $('.description').on('change', function() {
+    const timeBlockId = $(this).parent().attr('id');
+    const descriptionValue = $(this).val();
+    localStorage.setItem(timeBlockId, descriptionValue);
+  });
+
+   const currentDateElement = $('#currentDay')
 $(function () {
   const currentDate = dayjs().format('ddd MMMM DD, YYYY')
   console.log(currentDate)
-   currentDateElement.text(currentDate)
-   
-   const currentHour = dayjs().format('H')
-   console.log(currentHour)
- 
-  //  if hour is equal to current hour display color red else, if  hour is less than current hour display color gray, else ,hour is more than current hour display color green 
-//   const rows = $("row");
-// let currentHour = parseInt(moment().format('H'));
-
-// Array.from(rows).forEach(row => {
-//   let
-//     rowIdString = row.id,
-//     rowHour;
-//   if (rowIdString) {
-//     rowHour = parseInt(rowIdString);
-//   }
-//   if (rowHour) {
-//     // Compares row id to current hour and sets color accordingly
-//     if (currentHour === rowHour) {
-//       setColor(row, "red");
-//     } else if ((currentHour < rowHour) && (currentHour > rowHour - 6)) {
-//       setColor(row, "green");
-//     } else if ((currentHour > rowHour) && (currentHour < rowHour + 6)) {
-//       setColor(row, "lightgrey");
-//     } else {
-//       setColor(row, "white");
-//     }
-//   }
-// });
-
-// function setColor(element, color) {
-//   element.style.backgroundColor = color;
-// }
-   /*
-   A conditional statement that checks every timeblock
-   */
-
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
+currentDateElement.text(currentDate)
 });
